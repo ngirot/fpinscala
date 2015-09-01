@@ -2,6 +2,9 @@ package exercices.gettingstarted
 
 object Fibonacci {
 
+  /**
+   * Exercice 2.1
+   */
   def fib(n: Int): Int = {
 
     @annotation.tailrec
