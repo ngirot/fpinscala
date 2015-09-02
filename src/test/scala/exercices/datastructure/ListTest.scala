@@ -4,6 +4,8 @@ import org.scalatest.FunSuite
 
 class ListTest extends FunSuite {
 
+  val even = (i: Int) => i % 2 == 0
+
   test("Tail should remove first item of a list") {
     assert(List.tail(List(1, 2, 3)) == List(2, 3))
   }
@@ -48,6 +50,22 @@ class ListTest extends FunSuite {
 
   test("Drop should return the exact same list when n is equal to zero") {
     assert(List.drop(List(1, 2, 3), 0) == List(1, 2, 3))
+  }
+
+  test("DropWhile should remove only the all firsts element matching the condition") {
+    assert(List.dropWhile(List(2, 4, 5, 6), even) == List(5, 6))
+  }
+
+  test("DropWhile return an empty list if the list is empty") {
+    assert(List.dropWhile(Nil, even) == Nil)
+  }
+
+  test("DropWhile return the entire list if no element matches the condition") {
+    assert(List.dropWhile(List(1, 3, 5), even) == List(1, 3, 5))
+  }
+
+  test("DropWhile return an empty list if every element matches the condition") {
+    assert(List.dropWhile(List(2, 4, 6), even) == Nil)
   }
 
 }

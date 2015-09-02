@@ -62,4 +62,17 @@ object List {
     loop(l, n)
   }
 
+  /**
+   * Exercice 3.5
+   */
+  @annotation.tailrec
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = {
+    l match {
+      case Nil => Nil
+      case Cons(el, tail) =>
+        if (f(el)) dropWhile(tail, f)
+        else l
+    }
+  }
+
 }
