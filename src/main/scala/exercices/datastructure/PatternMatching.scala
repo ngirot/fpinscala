@@ -7,5 +7,5 @@ object PatternMatching {
    */
  def main(args: Array[String]) =
    // Should display 3
-   print(List.valeurPatternMatching)
+   print(List.valuePatternMatching)
 }

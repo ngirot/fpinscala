@@ -20,7 +20,7 @@ object List {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
 
-  def valeurPatternMatching =
+  def valuePatternMatching =
     List(1, 2, 3, 4, 5) match {
       case Cons(x, Cons(2, Cons(4, _)))          => x
       case Nil                                   => 42
@@ -37,4 +37,10 @@ object List {
       case Nil           => Nil
       case Cons(_, tail) => tail
     }
+
+  /**
+   * Exercice 3.3
+   */
+  def setHead[A](l: List[A], el: A): List[A] =
+    Nil
 }
