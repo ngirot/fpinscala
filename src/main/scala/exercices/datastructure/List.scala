@@ -42,5 +42,8 @@ object List {
    * Exercice 3.3
    */
   def setHead[A](l: List[A], el: A): List[A] =
-    Nil
+    l match {
+      case Nil           => throw new IllegalArgumentException
+      case Cons(_, tail) => Cons(el, tail)
+    }
 }

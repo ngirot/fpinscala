@@ -16,4 +16,18 @@ class ListTest extends FunSuite {
     assert(List.tail(List(1)) == Nil)
   }
 
+  test("SetHead should return a list with a different first element") {
+    assert(List.setHead(List(1, 2, 3), 0) == List(0, 2, 3))
+  }
+
+  test("SetHead fail if the list is empty") {
+    intercept[IllegalArgumentException] {
+      List.setHead(Nil, 0)
+    }
+  }
+
+  test("SetHead should return a new list with ontly the element for a list with only one element") {
+    assert(List.setHead(List(1), 0) == List(0))
+  }
+
 }
