@@ -30,4 +30,24 @@ class ListTest extends FunSuite {
     assert(List.setHead(List(1), 0) == List(0))
   }
 
+  test("Drop should remove the nth elements of a list with more than n element") {
+    assert(List.drop(List(1, 2, 3), 2) == List(3))
+  }
+
+  test("Drop should fail when we try to remove more element that are in the list") {
+    intercept[IllegalArgumentException] {
+      List.drop(List(1, 2), 3)
+    }
+  }
+
+  test("Drop should fail when we try to remove a negative number of element from the list") {
+    intercept[IllegalArgumentException] {
+      List.drop(List(1, 2), -1)
+    }
+  }
+
+  test("Drop should return the exact same list when n is equal to zero") {
+    assert(List.drop(List(1, 2, 3), 0) == List(1, 2, 3))
+  }
+
 }

@@ -46,4 +46,20 @@ object List {
       case Nil           => throw new IllegalArgumentException
       case Cons(_, tail) => Cons(el, tail)
     }
+
+  /**
+   * Exercice 3.4
+   */
+  def drop[A](l: List[A], n: Int): List[A] = {
+    @annotation.tailrec
+    def loop(l: List[A], n: Int): List[A] =
+      if (n == 0) l
+      else l match {
+        case Nil           => throw new IllegalArgumentException
+        case Cons(_, tail) => loop(tail, n - 1)
+      }
+
+    loop(l, n)
+  }
+
 }
