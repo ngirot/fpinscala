@@ -29,4 +29,12 @@ object List {
       case _                                     => 101
     }
 
+  /**
+   * Exervice 3.2
+   */
+  def tail[A](l: List[A]): List[A] =
+    l match {
+      case Nil           => Nil
+      case Cons(_, tail) => tail
+    }
 }
