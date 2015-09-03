@@ -75,4 +75,14 @@ object List {
     }
   }
 
+  /**
+   * Exercice 3.6
+   */
+  def init[A](l: List[A]): List[A] =
+    l match {
+      case Nil            => throw new IllegalArgumentException
+      case Cons(el, Nil)  => Nil
+      case Cons(el, tail) => Cons(el, init(tail))
+    }
+
 }

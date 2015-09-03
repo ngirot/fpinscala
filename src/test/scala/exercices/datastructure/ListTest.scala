@@ -68,4 +68,18 @@ class ListTest extends FunSuite {
     assert(List.dropWhile(List(2, 4, 6), even) == Nil)
   }
 
+  test("Init should return the complete list without the last element") {
+    assert(List.init(List(1, 2, 3)) == List(1, 2))
+  }
+
+  test("Init should fail when we try to remove last element of an empty list") {
+    intercept[IllegalArgumentException] {
+      List.init(Nil)
+    }
+  }
+
+  test("Init should return Nil for a list with only one element") {
+    assert(List.init(List(1)) == Nil)
+  }
+
 }
