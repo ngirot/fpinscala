@@ -29,6 +29,12 @@ object List {
       case _                                     => 101
     }
 
+  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B =
+    as match {
+      case Nil         => z
+      case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+    }
+
   /**
    * Exervice 3.2
    */
