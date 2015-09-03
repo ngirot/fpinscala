@@ -91,4 +91,9 @@ object List {
       case Cons(el, tail) => Cons(el, init(tail))
     }
 
+  /**
+   * Exercice 3.9
+   */
+  def length[A](as: List[A]): Int =
+    foldRight(as, 0)((x, y) => 1 + y)
 }

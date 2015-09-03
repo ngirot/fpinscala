@@ -82,4 +82,12 @@ class ListTest extends FunSuite {
     assert(List.init(List(1)) == Nil)
   }
 
+  test("Length of an empty list should be 0") {
+    assert(List.length(Nil) == 0)
+  }
+
+  test("Length of a non empty list should be the number of element") {
+    assert(List.length(List(1, 2, 3)) == 3)
+  }
+
 }
