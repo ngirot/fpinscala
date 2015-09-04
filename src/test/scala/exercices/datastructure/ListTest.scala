@@ -90,4 +90,12 @@ class ListTest extends FunSuite {
     assert(List.length(List(1, 2, 3)) == 3)
   }
 
+  test("FoldLeft should fold a list") {
+    assert(List.foldLeft(List(6, 2, 3), 1.0)(_ * _) == 36)
+  }
+
+  test("FoldLeft should fold a return the identity value if list is empty") {
+    assert(List.foldLeft(Nil: List[Int], 5)(_ + _) == 5)
+  }
+
 }
