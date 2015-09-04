@@ -2,6 +2,7 @@
 /target/
 /project/target
 /project/project
+.tmpBin
 .project
 .cache-main
 .cache-tests
