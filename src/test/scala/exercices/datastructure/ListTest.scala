@@ -98,4 +98,28 @@ class ListTest extends FunSuite {
     assert(List.foldLeft(Nil: List[Int], 5)(_ + _) == 5)
   }
 
+  test("SumLeft should return 0 for an empty list") {
+    assert(List.sumLeft(Nil) == 0)
+  }
+
+  test("SumLeft should return the sum of all Int of a list") {
+    assert(List.sumLeft(List(4, 5, 9)) == 18)
+  }
+
+  test("ProductLeft should return 1 for an empty list") {
+    assert(List.productLeft(Nil) == 1)
+  }
+
+  test("ProductLeft should return the product of all Double of a list") {
+    assert(List.productLeft(List(2, 3, 5)) == 30)
+  }
+
+  test("LengthLeft of an empty list should be 0") {
+    assert(List.lengthLeft(Nil) == 0)
+  }
+
+  test("LengthLeft of a non empty list should be the number of element") {
+    assert(List.lengthLeft(List(1, 2, 3)) == 3)
+  }
+
 }

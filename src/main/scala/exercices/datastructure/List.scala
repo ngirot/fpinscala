@@ -108,4 +108,15 @@ object List {
     }
   }
 
+  /**
+   * Exercice 3.11
+   */
+  def sumLeft(ints: List[Int]): Int =
+    foldLeft(ints, 0)(_ + _)
+
+  def productLeft(ds: List[Double]): Double =
+    foldLeft(ds, 1.0)(_ * _)
+
+  def lengthLeft[A](as: List[A]): Int =
+    foldLeft(as, 0)((a, b) => a + 1)
 }
