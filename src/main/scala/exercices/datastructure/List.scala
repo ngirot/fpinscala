@@ -1,5 +1,7 @@
 package exercices.datastructure
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -57,7 +59,7 @@ object List {
    * Exercice 3.4
    */
   def drop[A](l: List[A], n: Int): List[A] = {
-    @annotation.tailrec
+    @tailrec
     def loop(l: List[A], n: Int): List[A] =
       if (n == 0) l
       else l match {
@@ -71,7 +73,7 @@ object List {
   /**
    * Exercice 3.5
    */
-  @annotation.tailrec
+  @tailrec
   def dropWhile[A](l: List[A], f: A => Boolean): List[A] = {
     l match {
       case Nil => Nil
@@ -100,7 +102,7 @@ object List {
   /**
    * Exercice 3.10
    */
-  @annotation.tailrec
+  @tailrec
   def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
     as match {
       case Nil         => z

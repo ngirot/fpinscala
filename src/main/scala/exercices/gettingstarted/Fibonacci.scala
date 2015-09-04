@@ -1,5 +1,7 @@
 package exercices.gettingstarted
 
+import scala.annotation.tailrec
+
 object Fibonacci {
 
   /**
@@ -7,7 +9,7 @@ object Fibonacci {
    */
   def fib(n: Int): Int = {
 
-    @annotation.tailrec
+    @tailrec
     def go(n: Int, previous: Int, current: Int): Int =
       if (n == 0) previous
       else go(n - 1, current, previous + current)
