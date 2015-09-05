@@ -130,4 +130,20 @@ class ListTest extends FunSuite {
     assert(List.reverse(List(1, 2, 3)) == List(3, 2, 1))
   }
 
+  test("FoldLeftUsingFoldRight should fold a list") {
+    assert(List.foldLeftUsingFoldRight(List(6, 2, 3), 1.0)(_ * _) == 36)
+  }
+
+  test("FoldLeftUsingFoldRight should fold a return the identity value if list is empty") {
+    assert(List.foldLeftUsingFoldRight(Nil: List[Int], 5)(_ + _) == 5)
+  }
+
+  test("FoldRightUsingFoldLeft should fold a list") {
+    assert(List.foldRightUsingFoldLeft(List(6, 2, 3), 1.0)(_ * _) == 36)
+  }
+
+  test("FoldRightUsingFoldLeft should fold a return the identity value if list is empty") {
+    assert(List.foldRightUsingFoldLeft(Nil: List[Int], 5)(_ + _) == 5)
+  }
+
 }
