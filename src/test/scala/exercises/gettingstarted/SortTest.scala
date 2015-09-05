@@ -1,4 +1,4 @@
-package exercices.gettingstarted
+package exercises.gettingstarted
 
 import org.scalatest.FunSuite
 

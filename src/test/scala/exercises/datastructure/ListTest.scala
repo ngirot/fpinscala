@@ -1,4 +1,4 @@
-package exercices.datastructure
+package exercises.datastructure
 
 import org.scalatest.FunSuite
 

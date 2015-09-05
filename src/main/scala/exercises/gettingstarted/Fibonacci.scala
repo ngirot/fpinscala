@@ -1,11 +1,11 @@
-package exercices.gettingstarted
+package exercises.gettingstarted
 
 import scala.annotation.tailrec
 
 object Fibonacci {
 
   /**
-   * Exercice 2.1
+   * Exercise 2.1
    */
   def fib(n: Int): Int = {
 

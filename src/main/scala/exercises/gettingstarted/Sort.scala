@@ -1,11 +1,11 @@
-package exercices.gettingstarted
+package exercises.gettingstarted
 
 import scala.annotation.tailrec
 
 object Sort {
 
   /**
-   * Exercice 2.2
+   * Exercise 2.2
    */
   def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean = {
 

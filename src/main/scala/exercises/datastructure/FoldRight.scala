@@ -1,9 +1,9 @@
-package exercices.datastructure
+package exercises.datastructure
 
 object FoldRight {
 
   /**
-   * Exercice 3.8
+   * Exercise 3.8
    */
   def main(args: Array[String]) = {
     // Should rebuild the initial list

@@ -1,4 +1,4 @@
-package exercices.datastructure
+package exercises.datastructure
 
 import scala.annotation.tailrec
 
@@ -38,7 +38,7 @@ object List {
     }
 
   /**
-   * Exervice 3.2
+   * Exercise 3.2
    */
   def tail[A](l: List[A]): List[A] =
     l match {
@@ -47,7 +47,7 @@ object List {
     }
 
   /**
-   * Exercice 3.3
+   * Exercise 3.3
    */
   def setHead[A](l: List[A], el: A): List[A] =
     l match {
@@ -56,7 +56,7 @@ object List {
     }
 
   /**
-   * Exercice 3.4
+   * Exercise 3.4
    */
   def drop[A](l: List[A], n: Int): List[A] = {
     @tailrec
@@ -71,7 +71,7 @@ object List {
   }
 
   /**
-   * Exercice 3.5
+   * Exercise 3.5
    */
   @tailrec
   def dropWhile[A](l: List[A], f: A => Boolean): List[A] = {
@@ -84,7 +84,7 @@ object List {
   }
 
   /**
-   * Exercice 3.6
+   * Exercise 3.6
    */
   def init[A](l: List[A]): List[A] =
     l match {
@@ -94,13 +94,13 @@ object List {
     }
 
   /**
-   * Exercice 3.9
+   * Exercise 3.9
    */
   def length[A](as: List[A]): Int =
     foldRight(as, 0)((x, y) => 1 + y)
 
   /**
-   * Exercice 3.10
+   * Exercise 3.10
    */
   @tailrec
   def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
@@ -111,7 +111,7 @@ object List {
   }
 
   /**
-   * Exercice 3.11
+   * Exercise 3.11
    */
   def sumLeft(ints: List[Int]): Int =
     foldLeft(ints, 0)(_ + _)
@@ -123,7 +123,7 @@ object List {
     foldLeft(as, 0)((a, b) => a + 1)
 
   /**
-   * Exercice 3.12
+   * Exercise 3.12
    */
   def reverse[A](as: List[A]): List[A] =
     foldLeft(as, Nil: List[A])((b, a) => Cons(a, b))
