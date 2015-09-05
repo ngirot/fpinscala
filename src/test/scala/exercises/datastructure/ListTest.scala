@@ -162,4 +162,16 @@ class ListTest extends FunSuite {
     assert(List.append(Nil, Nil) == Nil)
   }
 
+  test("Concat an empty list is an empty list") {
+    assert(List.concat(Nil) == Nil)
+  }
+
+  test("Concat a list a one single list should be the list") {
+    assert(List.concat(List(List(1, 2))) == List(1, 2))
+  }
+
+  test("Concat a list two different list should one big list with all elements from the two lists") {
+    assert(List.concat(List(List(1, 2), List(3, 4))) == List(1, 2, 3, 4))
+  }
+
 }
