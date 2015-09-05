@@ -146,4 +146,20 @@ class ListTest extends FunSuite {
     assert(List.foldRightUsingFoldLeft(Nil: List[Int], 5)(_ + _) == 5)
   }
 
+  test("Append should create a list with the elements of two others in order") {
+    assert(List.append(List(1, 2), List(3, 4)) == List(1, 2, 3, 4))
+  }
+
+  test("Append an empty list to another list should return the other list") {
+    assert(List.append(List(1, 2), Nil) == List(1, 2))
+  }
+
+  test("Append a list to an empty list should return the initial list") {
+    assert(List.append(Nil, List(1, 2)) == List(1, 2))
+  }
+
+  test("Append an empty list to another empty list should be an emtpy list") {
+    assert(List.append(Nil, Nil) == Nil)
+  }
+
 }
