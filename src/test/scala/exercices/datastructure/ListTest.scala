@@ -122,4 +122,12 @@ class ListTest extends FunSuite {
     assert(List.lengthLeft(List(1, 2, 3)) == 3)
   }
 
+  test("Reverse of Nil is Nil") {
+    assert(List.reverse(Nil) == Nil)
+  }
+
+  test("Reverse should return a list inthe reverse order") {
+    assert(List.reverse(List(1, 2, 3)) == List(3, 2, 1))
+  }
+
 }
