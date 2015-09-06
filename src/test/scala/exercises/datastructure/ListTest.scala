@@ -226,4 +226,12 @@ class ListTest extends FunSuite {
     assert(List.zipWith(List(4), Nil: List[Int])(_ + _) == Nil)
   }
 
+  test("HasSubqequence should return false when a reference list does not contain another list") {
+    assert(!List.hasSubsequence(List(1, 2, 3, 4), List(2, 4)))
+  }
+
+  test("HasSubqequence should return true when a reference list contains another list in order") {
+    assert(List.hasSubsequence(List(1, 2, 3, 4), List(2, 3)))
+  }
+
 }

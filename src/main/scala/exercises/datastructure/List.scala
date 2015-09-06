@@ -207,4 +207,14 @@ object List {
       case (Nil, _)                             => Nil
       case (Cons(el1, tail1), Cons(el2, tail2)) => Cons(f(el1, el2), zipWith(tail1, tail2)(f))
     }
+
+  /**
+   * Exercise 3.24
+   */
+  def hasSubsequence[A](l: List[A], sub: List[A]): Boolean =
+    l match {
+      case Nil => false
+      case Cons(el, tail) if length(filter(zipWith(l, sub)(_ == _))(_ == false)) == 0 => true
+      case Cons(el, tail) => hasSubsequence(tail, sub)
+    }
 }
