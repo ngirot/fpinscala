@@ -186,4 +186,12 @@ class ListTest extends FunSuite {
     assert(List.doubleToString(List(1.0, 2.5)) == List("1.0", "2.5"))
   }
 
+  test("Map on an empty list should return an empty list") {
+    assert(List.map(Nil: List[Int])(_ + 1) == Nil)
+  }
+
+  test("Map should apply fonction all on element on a list") {
+    assert(List.map(List(1, 5))(_ + 1) == List(2, 6))
+  }
+
 }
