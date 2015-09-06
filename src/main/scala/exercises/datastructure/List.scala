@@ -188,4 +188,14 @@ object List {
   def filterUsingFlatMap[A](l: List[A])(f: A => Boolean): List[A] =
     flatMap(l)((a) => if (f(a)) List(a) else Nil)
 
+  /**
+   * Exercise 3.22
+   */
+  def addTwoLists(l1: List[Int], l2: List[Int]): List[Int] =
+    (l1, l2) match {
+      case (_, Nil)                             => Nil
+      case (Nil, _)                             => Nil
+      case (Cons(el1, tail1), Cons(el2, tail2)) => Cons(el1 + el2, addTwoLists(tail1, tail2))
+    }
+
 }

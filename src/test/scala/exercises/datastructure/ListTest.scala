@@ -206,4 +206,8 @@ class ListTest extends FunSuite {
     assert(List.filterUsingFlatMap(List(1, 2, 3, 4, 5, 6))(_ % 2 == 0) == List(2, 4, 6))
   }
 
+  test("AddTwoLists should return a new list with the sum of the two list elements two by two") {
+    assert(List.addTwoLists(List(1, 2, 3), List(4, 5, 6)) == List(5, 7, 9))
+  }
+
 }
