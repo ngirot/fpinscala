@@ -182,4 +182,8 @@ class ListTest extends FunSuite {
     assert(List.addOne(List(1, 5, 9)) == List(2, 6, 10))
   }
 
+  test("DoubleAsString on an empty list should return an empty list") {
+    assert(List.doubleToString(List(1.0, 2.5)) == List("1.0", "2.5"))
+  }
+
 }
