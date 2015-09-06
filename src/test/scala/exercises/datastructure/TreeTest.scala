@@ -24,4 +24,8 @@ class TreeTest extends FunSuite {
     assert(Tree.depth(Branch(Branch(Branch(Branch(Leaf(1), Leaf(1)), Leaf(1)), Leaf(1)), Leaf(1))) == 5)
   }
 
+  test("Map should create a Tree with transformed values from a function") {
+    assert(Tree.map(Branch(Branch(Leaf(1), Leaf(1)), Leaf(2)))(_ + 1) == Branch(Branch(Leaf(2), Leaf(2)), Leaf(3)))
+  }
+
 }
