@@ -198,4 +198,13 @@ object List {
       case (Cons(el1, tail1), Cons(el2, tail2)) => Cons(el1 + el2, addTwoLists(tail1, tail2))
     }
 
+  /**
+   * Exercise 3.23
+   */
+  def zipWith[A, B](l1: List[A], l2: List[A])(f: (A, A) => B): List[B] =
+    (l1, l2) match {
+      case (_, Nil)                             => Nil
+      case (Nil, _)                             => Nil
+      case (Cons(el1, tail1), Cons(el2, tail2)) => Cons(f(el1, el2), zipWith(tail1, tail2)(f))
+    }
 }

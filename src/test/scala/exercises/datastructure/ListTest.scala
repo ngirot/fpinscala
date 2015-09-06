@@ -210,4 +210,20 @@ class ListTest extends FunSuite {
     assert(List.addTwoLists(List(1, 2, 3), List(4, 5, 6)) == List(5, 7, 9))
   }
 
+  test("ZipWith should combine elements of two lists two by two") {
+    assert(List.zipWith(List(1, 2, 3), List(4, 5, 6))(_ + _) == List(5, 7, 9))
+  }
+
+  test("ZipWith should combine elements of two lists two by two, with list with differents length") {
+    assert(List.zipWith(List(1, 2, 3), List(4))(_ + _) == List(5))
+  }
+
+  test("ZipWith should return Nil if the first list if empty") {
+    assert(List.zipWith(Nil: List[Int], List(4))(_ + _) == Nil)
+  }
+
+  test("ZipWith should return Nil if the second list if empty") {
+    assert(List.zipWith(List(4), Nil: List[Int])(_ + _) == Nil)
+  }
+
 }
