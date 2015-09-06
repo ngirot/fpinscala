@@ -16,4 +16,12 @@ class TreeTest extends FunSuite {
     assert(Tree.maximum(Branch(Branch(Leaf(-10), Leaf(10)), Leaf(8))) == 10)
   }
 
+  test("Depth of a leaf should be one") {
+    assert(Tree.depth(Leaf(5)) == 1)
+  }
+
+  test("Depth of a tree with branch should the longest path to a leaf") {
+    assert(Tree.depth(Branch(Branch(Branch(Branch(Leaf(1), Leaf(1)), Leaf(1)), Leaf(1)), Leaf(1))) == 5)
+  }
+
 }
