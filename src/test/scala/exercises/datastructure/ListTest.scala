@@ -194,4 +194,8 @@ class ListTest extends FunSuite {
     assert(List.map(List(1, 5))(_ + 1) == List(2, 6))
   }
 
+  test("Filter should create a list without all element match a function") {
+    assert(List.filter(List(1, 2, 3, 4, 5, 6))(_ % 2 == 0) == List(2, 4, 6))
+  }
+
 }
