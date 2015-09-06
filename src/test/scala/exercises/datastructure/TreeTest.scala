@@ -12,4 +12,8 @@ class TreeTest extends FunSuite {
     assert(Tree.size(Branch(Branch(Leaf(1), Leaf(1)), Leaf(2))) == 5)
   }
 
+  test("Maximum sould return the biggest integer of a tree") {
+    assert(Tree.maximum(Branch(Branch(Leaf(-10), Leaf(10)), Leaf(8))) == 10)
+  }
+
 }
