@@ -174,4 +174,12 @@ class ListTest extends FunSuite {
     assert(List.concat(List(List(1, 2), List(3, 4))) == List(1, 2, 3, 4))
   }
 
+  test("addOne on an empty list should return an empty list") {
+    assert(List.addOne(Nil) == Nil)
+  }
+
+  test("addOne should return a list with all element of an other, plus one") {
+    assert(List.addOne(List(1, 5, 9)) == List(2, 6, 10))
+  }
+
 }

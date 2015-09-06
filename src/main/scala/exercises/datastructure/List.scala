@@ -1,6 +1,7 @@
 package exercises.datastructure
 
 import scala.annotation.tailrec
+import scala.util.control.TailCalls.TailRec
 
 sealed trait List[+A]
 case object Nil extends List[Nothing]
@@ -149,5 +150,11 @@ object List {
    */
   def concat[A](l: List[List[A]]): List[A] =
     foldRight(l, Nil: List[A])(append)
+
+  /**
+   * Exercise 3.16
+   */
+  def addOne[A](l: List[Int]): List[Int] =
+    foldRight(l, Nil: List[Int])((a, b) => Cons(a + 1, b))
 
 }
