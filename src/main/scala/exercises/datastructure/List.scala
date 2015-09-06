@@ -182,4 +182,10 @@ object List {
     concat(map(as)(f))
   }
 
+  /**
+   * Exercise 3.21
+   */
+  def filterUsingFlatMap[A](l: List[A])(f: A => Boolean): List[A] =
+    flatMap(l)((a) => if (f(a)) List(a) else Nil)
+
 }

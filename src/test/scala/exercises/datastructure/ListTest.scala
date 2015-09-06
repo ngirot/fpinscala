@@ -202,4 +202,8 @@ class ListTest extends FunSuite {
     assert(List.flatMap(List(1, 2))(el => List(el, el)) == List(1, 1, 2, 2))
   }
 
+  test("FilterUsingFlatMap should create a list without all element match a function") {
+    assert(List.filterUsingFlatMap(List(1, 2, 3, 4, 5, 6))(_ % 2 == 0) == List(2, 4, 6))
+  }
+
 }
