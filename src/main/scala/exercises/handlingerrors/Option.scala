@@ -30,3 +30,13 @@ trait Option[+A] {
 
 case class Some[+A](get: A) extends Option[A]
 case object None extends Option[Nothing]
+
+object Option {
+
+  /**
+   * Exercise 4.3
+   */
+  def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] =
+    a.flatMap(x => b.flatMap(y => Some(f(x, y))))
+
+}

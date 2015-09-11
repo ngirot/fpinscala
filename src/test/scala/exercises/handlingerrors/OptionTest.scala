@@ -47,4 +47,16 @@ class OptionTest extends FunSuite {
   test("OrElse should return the parameter if Option is not defined") {
     assert(None.orElse(Some(2)) == Some(2))
   }
+
+  test("Map2 should return an element, result of the function when a and b and Some") {
+    assert(Option.map2(Some(1), Some(2))(_ + _) == Some(3))
+  }
+
+  test("Map2 should return None if a is None") {
+    assert(Option.map2(None: Option[Int], Some(2))(_ + _) == None)
+  }
+
+  test("Map2 should return None if b is None") {
+    assert(Option.map2(Some(1), None: Option[Int])(_ + _) == None)
+  }
 }
