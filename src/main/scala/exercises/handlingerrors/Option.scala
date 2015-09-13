@@ -39,4 +39,10 @@ object Option {
   def map2[A, B, C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] =
     a.flatMap(x => b.flatMap(y => Some(f(x, y))))
 
+  /**
+   * Exercise 4.4
+   */
+  def sequence[A](l: List[Option[A]]): Option[List[A]] = {
+    l.foldRight[Option[List[A]]](Some(Nil))((a, b) => map2(a, b)(_ :: _))
+  }
 }

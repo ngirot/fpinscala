@@ -59,4 +59,12 @@ class OptionTest extends FunSuite {
   test("Map2 should return None if b is None") {
     assert(Option.map2(Some(1), None: Option[Int])(_ + _) == None)
   }
+
+  test("Sequence should convert a list of option into a option of a list if all option are not None") {
+    assert(Option.sequence(List(Some(1), Some(2), Some(3))) == Some(List(1, 2, 3)))
+  }
+
+  test("Sequence shoudl convert a list of option into None if one of the element is None") {
+    assert(Option.sequence(List(Some(1), None, Some(3))) == None)
+  }
 }
