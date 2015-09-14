@@ -64,7 +64,23 @@ class OptionTest extends FunSuite {
     assert(Option.sequence(List(Some(1), Some(2), Some(3))) == Some(List(1, 2, 3)))
   }
 
-  test("Sequence shoudl convert a list of option into None if one of the element is None") {
+  test("Sequence should convert a list of option into None if one of the element is None") {
     assert(Option.sequence(List(Some(1), None, Some(3))) == None)
+  }
+
+  test("Traverse should apply a function to all element and return list in an option if alla of them are not None") {
+    assert(Option.traverse(List(1, 2, 3))(i => Some(i * 2)) == Some(List(2, 4, 6)))
+  }
+
+  test("Traverse should return None if any element where the function is applied equals None") {
+    assert(Option.traverse(List(1, 2, 3))(i => if (i == 2) None else Some(i)) == None)
+  }
+
+  test("SequenceUsingTraverse should convert a list of option into a option of a list if all option are not None") {
+    assert(Option.sequenceUsingTraverse(List(Some(1), Some(2), Some(3))) == Some(List(1, 2, 3)))
+  }
+
+  test("SequenceUsingTraverse should convert a list of option into None if one of the element is None") {
+    assert(Option.sequenceUsingTraverse(List(Some(1), None, Some(3))) == None)
   }
 }

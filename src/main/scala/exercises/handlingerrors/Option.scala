@@ -42,7 +42,15 @@ object Option {
   /**
    * Exercise 4.4
    */
-  def sequence[A](l: List[Option[A]]): Option[List[A]] = {
+  def sequence[A](l: List[Option[A]]): Option[List[A]] =
     l.foldRight[Option[List[A]]](Some(Nil))((a, b) => map2(a, b)(_ :: _))
-  }
+
+  /**
+   * Exercise 4.5
+   */
+  def traverse[A, B](l: List[A])(f: A => Option[B]): Option[List[B]] =
+    l.foldRight[Option[List[B]]](Some(Nil))((a, b) => map2(f(a), b)(_ :: _))
+
+  def sequenceUsingTraverse[A](l: List[Option[A]]): Option[List[A]] =
+    traverse(l)(a => a)
 }
