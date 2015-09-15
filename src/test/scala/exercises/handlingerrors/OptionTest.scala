@@ -68,7 +68,7 @@ class OptionTest extends FunSuite {
     assert(Option.sequence(List(Some(1), None, Some(3))) == None)
   }
 
-  test("Traverse should apply a function to all element and return list in an option if alla of them are not None") {
+  test("Traverse should apply a function to all element and return list in an option if all of them are not None") {
     assert(Option.traverse(List(1, 2, 3))(i => Some(i * 2)) == Some(List(2, 4, 6)))
   }
 
