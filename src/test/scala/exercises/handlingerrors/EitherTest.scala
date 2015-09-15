@@ -40,4 +40,20 @@ class EitherTest extends FunSuite {
     assert(Right(2).map2(Left("error"))(null) == Left("error"))
   }
 
+  test("Sequence should convert a list of Either into a Right of a list if all Either are Right") {
+    assert(Either.sequence(List(Right(1), Right(2))) == Right(List(1, 2)))
+  }
+
+  test("Sequence should convert a list of Either into a the first Left of the sequence if one of the element is left") {
+    assert(Either.sequence(List(Right(1), Left("error"), Left("another error"))) == Left("error"))
+  }
+
+  test("Traverse should apply a function to all element and return list in an Right if all of them are not Left") {
+    assert(Either.traverse(List(1, 2, 3))(i => Right(i * 2)) == Right(List(2, 4, 6)))
+  }
+
+  test("Traverse should return the first Left if any element where the function is applied equals Left") {
+    assert(Either.traverse(List(1, 2, 3))(i => if (i == 2) Left("error" + i) else Right(i)) == Left("error2"))
+  }
+
 }
