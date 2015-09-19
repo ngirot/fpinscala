@@ -1,6 +1,19 @@
-package strictnesslaziness
+package exercises.strictnesslaziness
 
-sealed trait Stream[+A]
+import scala.annotation.tailrec
+
+sealed trait Stream[+A] {
+
+  /**
+   * Exercise 5.1
+   */
+  def toList: List[A] =
+    this match {
+      case Empty      => Nil
+      case Cons(h, t) => h() :: t().toList
+    }
+}
+
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
 
@@ -15,4 +28,5 @@ object Stream {
 
   def apply[A](as: A*): Stream[A] =
     if (as.isEmpty) empty else cons(as.head, apply(as.tail: _*))
+
 }
