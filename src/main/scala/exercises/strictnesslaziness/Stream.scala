@@ -12,6 +12,17 @@ sealed trait Stream[+A] {
       case Empty      => Nil
       case Cons(h, t) => h() :: t().toList
     }
+
+  /**
+   * Exercise 5.2
+   */
+  def take(n: Int): Stream[A] =
+    this match {
+      case _ if n < 0           => throw new IllegalArgumentException
+      case Cons(h, _) if n == 1 => Cons(h, () => Empty: Stream[A])
+      case Cons(h, t) if n > 1  => Cons(h, () => t().take(n - 1))
+      case _                    => Empty
+    }
 }
 
 case object Empty extends Stream[Nothing]
