@@ -71,4 +71,17 @@ class StreamTest extends FunSuite {
   test("ForAll should return true for an empty Stream") {
     assert(Empty.forAll(null) == true)
   }
+
+  test("TakeWhileUsingFoldRight should return all the first element matching a function") {
+    assert(Stream(2, 4, 6, 5, 8).takeWhileUsingFoldRight(_ % 2 == 0).toList == Stream(2, 4, 6).toList)
+  }
+
+  test("TakeWhileUsingFoldRight should return an empty list if the very first element does not match the function") {
+    assert(Stream(1, 4).takeWhileUsingFoldRight(_ % 2 == 0).toList == Stream.empty.toList)
+  }
+
+  test("TakeWhileUsingFoldRight should return the entire list if all elements matches the function") {
+    assert(Stream(2, 4).takeWhileUsingFoldRight(_ % 2 == 0).toList == Stream(2, 4).toList)
+  }
+
 }

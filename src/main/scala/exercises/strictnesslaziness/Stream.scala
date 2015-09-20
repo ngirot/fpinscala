@@ -58,6 +58,17 @@ sealed trait Stream[+A] {
       case Empty      => true
       case Cons(h, t) => p(h()) && t().forAll(p)
     }
+
+  /**
+   * Exercise 5.5
+   */
+  def takeWhileUsingFoldRight(f: A => Boolean): Stream[A] = {
+    def buildTail(a: A, b: Stream[A]): Stream[A] = {
+      if (f(a)) Stream.cons(a, b.takeWhileUsingFoldRight(f))
+      else Stream.empty
+    }
+    foldRight(Stream.empty[A])((a, b) => buildTail(a, b))
+  }
 }
 
 case object Empty extends Stream[Nothing]
