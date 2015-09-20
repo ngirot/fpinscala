@@ -29,4 +29,16 @@ class StreamTest extends FunSuite {
   test("Take should return the entire stream when we take more element than the number of elements in the stream") {
     assert(Stream(1, 2).take(3).toList == Stream(1, 2).toList)
   }
+
+  test("TakeWhild should return all the first element matching a function") {
+    assert(Stream(2, 4, 6, 5, 8).takeWhile(_ % 2 == 0).toList == Stream(2, 4, 6).toList)
+  }
+
+  test("TakeWhild should return an empty list if the very first element does not match the function") {
+    assert(Stream(1, 4).takeWhile(_ % 2 == 0).toList == Stream.empty.toList)
+  }
+
+  test("TakeWhild should return the entire list if all elements matches the function") {
+    assert(Stream(2, 4).takeWhile(_ % 2 == 0).toList == Stream(2, 4).toList)
+  }
 }
