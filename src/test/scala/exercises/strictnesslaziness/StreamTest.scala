@@ -59,4 +59,16 @@ class StreamTest extends FunSuite {
   test("TakeWhile should return the entire list if all elements matches the function") {
     assert(Stream(2, 4).takeWhile(_ % 2 == 0).toList == Stream(2, 4).toList)
   }
+
+  test("ForAll should return true when all elements matches") {
+    assert(Stream(2, 4).forAll(_ % 2 == 0) == true)
+  }
+
+  test("ForAll should return false when one of the elements doesn't matche") {
+    assert(Stream(2, 3, 6).forAll(_ % 2 == 0) == false)
+  }
+
+  test("ForAll should return true for an empty Stream") {
+    assert(Empty.forAll(null) == true)
+  }
 }

@@ -5,6 +5,12 @@ import scala.util.control.TailCalls.TailRec
 
 sealed trait Stream[+A] {
 
+  def foldRight[B](z: => B)(f: (A, B) => B): B =
+    this match {
+      case Cons(h, t) => f(h(), t().foldRight(z)(f))
+      case _          => z
+    }
+
   /**
    * Exercise 5.1
    */
@@ -42,6 +48,15 @@ sealed trait Stream[+A] {
       case Empty                  => Empty
       case Cons(h, t) if (f(h())) => Stream.cons(h(), t().takeWhile(f))
       case _                      => Stream.empty
+    }
+
+  /**
+   * Exercise 5.4
+   */
+  def forAll(p: A => Boolean): Boolean =
+    this match {
+      case Empty      => true
+      case Cons(h, t) => p(h()) && t().forAll(p)
     }
 }
 
