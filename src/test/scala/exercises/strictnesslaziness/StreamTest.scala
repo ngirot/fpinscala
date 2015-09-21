@@ -84,4 +84,12 @@ class StreamTest extends FunSuite {
     assert(Stream(2, 4).takeWhileUsingFoldRight(_ % 2 == 0).toList == Stream(2, 4).toList)
   }
 
+  test("HeadOptionUsingFoldRight should return None when the Stream is Empty") {
+    assert(Stream.empty.headOptionUsingFoldRight == None)
+  }
+
+  test("HeadOptionUsingFoldRight should return Some  of the first element when the Stream is not Empty") {
+    assert(Stream(1, 2).headOptionUsingFoldRight == Some(1))
+  }
+
 }

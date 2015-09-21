@@ -1,7 +1,6 @@
 package exercises.strictnesslaziness
 
 import scala.annotation.tailrec
-import scala.util.control.TailCalls.TailRec
 
 sealed trait Stream[+A] {
 
@@ -9,6 +8,12 @@ sealed trait Stream[+A] {
     this match {
       case Cons(h, t) => f(h(), t().foldRight(z)(f))
       case _          => z
+    }
+
+  def headOption: Option[A] =
+    this match {
+      case Empty      => None
+      case Cons(h, t) => Some(h())
     }
 
   /**
@@ -69,6 +74,12 @@ sealed trait Stream[+A] {
     }
     foldRight(Stream.empty[A])((a, b) => buildTail(a, b))
   }
+
+  /**
+   * Exercise 5.6
+   */
+  def headOptionUsingFoldRight: Option[A] =
+    foldRight(None: Option[A])((a, b) => Some(a))
 }
 
 case object Empty extends Stream[Nothing]
