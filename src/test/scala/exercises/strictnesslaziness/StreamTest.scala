@@ -92,4 +92,36 @@ class StreamTest extends FunSuite {
     assert(Stream(1, 2).headOptionUsingFoldRight == Some(1))
   }
 
+  test("Map on an empty stream should return an empty stream") {
+    assert(Empty.map(null) == Empty)
+  }
+
+  test("Map should apply fonction all on element on a Stream") {
+    assert(Stream(1, 2, 3).map(_ + 1).toList == List(2, 3, 4).toList)
+  }
+
+  test("Filter should create a stream without all element match a function") {
+    assert(Stream(1, 2, 3, 4, 5, 6).filter(_ % 2 == 0).toList == Stream(2, 4, 6).toList)
+  }
+
+  test("Append should create a stream with the elements of two others in order") {
+    assert(Stream(1, 2).append(Stream(3, 4)).toList == Stream(1, 2, 3, 4).toList)
+  }
+
+  test("Append an empty stream to another stream should return the other stream") {
+    assert(Empty.append(Stream(1, 2)).toList == Stream(1, 2).toList)
+  }
+
+  test("Append a list to an empty list should return the initial list") {
+    assert(Stream(1, 2).append(Empty).toList == Stream(1, 2).toList)
+  }
+
+  test("Append an empty list to another empty list should be an emtpy list") {
+    assert(Empty.append(Empty) == Empty)
+  }
+
+  test("FlatMap should retun a stream from all element created from the fonction") {
+    assert(Stream(1, 2).flatMap(el => Stream(el, el)).toList == Stream(1, 1, 2, 2).toList)
+  }
+
 }
