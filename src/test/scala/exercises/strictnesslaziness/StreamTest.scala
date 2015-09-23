@@ -124,4 +124,8 @@ class StreamTest extends FunSuite {
     assert(Stream(1, 2).flatMap(el => Stream(el, el)).toList == List(1, 1, 2, 2))
   }
 
+  test("Constant should return an infinit Stream of the same value") {
+    assert(Stream.constant(1).take(3).toList == List(1, 1, 1))
+  }
+
 }
