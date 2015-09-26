@@ -128,4 +128,12 @@ object Stream {
     cons(n, from(n + 1))
   }
 
+  /**
+   * Exercise 5.10
+   */
+  def fibs: Stream[Int] = {
+    def go(a: Int, b: Int): Stream[Int] =
+      cons(a, go(b, a + b))
+    go(0, 1)
+  }
 }

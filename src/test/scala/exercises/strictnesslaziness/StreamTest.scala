@@ -132,4 +132,8 @@ class StreamTest extends FunSuite {
     assert(Stream.from(1).take(5).toList == List(1, 2, 3, 4, 5))
   }
 
+  test("Fibs should return an infinite Stream of the Fibonnacci sequence") {
+    assert(Stream.fibs.take(7).toList == List(0, 1, 1, 2, 3, 5, 8))
+  }
+
 }
