@@ -136,4 +136,8 @@ class StreamTest extends FunSuite {
     assert(Stream.fibs.take(7).toList == List(0, 1, 1, 2, 3, 5, 8))
   }
 
+  test("Unfold should produce date until function return None") {
+    assert(Stream.unfold(1)(i => if (i < 10) Some((i, i * 2)) else None).toList == List(1, 2, 4, 8))
+  }
+
 }

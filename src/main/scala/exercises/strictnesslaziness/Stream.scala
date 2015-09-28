@@ -136,4 +136,15 @@ object Stream {
       cons(a, go(b, a + b))
     go(0, 1)
   }
+
+  /**
+   * Exercise 5.11
+   */
+  def unfold[A, S](z: S)(f: S => Option[(A, S)]): Stream[A] = {
+    val opt = f(z)
+    return opt match {
+      case None    => empty
+      case Some(x) => cons(x._1, unfold(x._2)(f))
+    }
+  }
 }
