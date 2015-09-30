@@ -140,4 +140,20 @@ class StreamTest extends FunSuite {
     assert(Stream.unfold(1)(i => if (i < 10) Some((i, i * 2)) else None).toList == List(1, 2, 4, 8))
   }
 
+  test("OnesUsingUnfold should return an infinite Stream of 1") {
+    assert(Stream.onesUsingUnfold.take(4).toList == List(1, 1, 1, 1))
+  }
+
+  test("ConstantUsingUnfold should return an infinite Stream of the same value") {
+    assert(Stream.constantUsingUnfold(1).take(3).toList == List(1, 1, 1))
+  }
+
+  test("FromUsingUnfold should return an infinite Stream of ascending int of one") {
+    assert(Stream.fromUsingUnfold(1).take(5).toList == List(1, 2, 3, 4, 5))
+  }
+
+  test("FibsUsingUnfold should return an infinite Stream of the Fibonnacci sequence") {
+    assert(Stream.fibsUsingUnfold.take(7).toList == List(0, 1, 1, 2, 3, 5, 8))
+  }
+
 }

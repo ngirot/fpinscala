@@ -147,4 +147,20 @@ object Stream {
       case Some(x) => cons(x._1, unfold(x._2)(f))
     }
   }
+
+  /**
+   * Exercise 5.12
+   */
+
+  def onesUsingUnfold: Stream[Int] =
+    unfold(1)(x => Some(1, 1))
+
+  def constantUsingUnfold[A](a: A): Stream[A] =
+    unfold(a)(x => Some(a, a))
+
+  def fromUsingUnfold(n: Int): Stream[Int] =
+    unfold(n)(x => Some(x, x + 1))
+
+  def fibsUsingUnfold: Stream[Int] =
+    unfold((0, 1))(x => Some(x._1, (x._2, x._1 + x._2)))
 }
