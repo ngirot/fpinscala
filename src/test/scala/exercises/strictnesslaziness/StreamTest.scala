@@ -156,4 +156,47 @@ class StreamTest extends FunSuite {
     assert(Stream.fibsUsingUnfold.take(7).toList == List(0, 1, 1, 2, 3, 5, 8))
   }
 
+  test("MapUsingUnfold on an empty stream should return an empty stream") {
+    assert(Empty.mapUsingUnfold(null) == Empty)
+  }
+
+  test("MapUsingUnfold should apply fonction all on element on a Stream") {
+    assert(Stream(1, 2, 3).mapUsingUnfold(_ + 1).toList == List(2, 3, 4))
+  }
+
+  test("TakeUsingUnfold should return the first elements of a Stream") {
+    assert(Stream(1, 2, 3, 4, 5).takeUsingUnfold(3).toList == List(1, 2, 3))
+  }
+
+  test("TakeUsingUnfold should return an empty Steam when we take the 0th first elements") {
+    assert(Stream(1, 2).takeUsingUnfold(0).toList == Nil)
+  }
+
+  test("TakeWhileUsingUnfold should return all the first element matching a function") {
+    assert(Stream(2, 4, 6, 5, 8).takeWhileUsingUnfold(_ % 2 == 0).toList == List(2, 4, 6))
+  }
+
+  test("TakeWhileUsingUnfold should return an empty list if the very first element does not match the function") {
+    assert(Stream(1, 4).takeWhileUsingUnfold(_ % 2 == 0) == Empty)
+  }
+
+  test("TakeWhileUsingUnfold should return the entire list if all elements matches the function") {
+    assert(Stream(2, 4).takeWhileUsingUnfold(_ % 2 == 0).toList == List(2, 4))
+  }
+
+  test("ZipWith should combine elements of two Stream two by two") {
+    assert(Stream(1, 2, 3).zipWith(Stream(4, 5, 6))(_ + _).toList == List(5, 7, 9))
+  }
+
+  test("ZipWith should combine elements of two Stream two by two, with list with differents length") {
+    assert(Stream(1, 2, 3).zipWith(Stream(4))(_ + _).toList == List(5))
+  }
+
+  test("ZipWith should return Empty if the second list if empty") {
+    assert(Stream(4).zipWith(Empty)(_ + _) == Empty)
+  }
+
+  test("ZipAll should consume both stream entirely") {
+    assert(Stream(1, 2, 3).zipAll(Stream(5, 6)).toList == List((Some(1), Some(5)), (Some(2), Some(6)), (Some(3), None)))
+  }
 }
