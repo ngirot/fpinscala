@@ -99,7 +99,6 @@ sealed trait Stream[+A] {
   /**
    * Exercise 5.13
    */
-
   def mapUsingUnfold[B](f: A => B): Stream[B] =
     Stream.unfold(this)(x => x match {
       case Cons(h, t) => Some((f(h()), t()))
@@ -133,6 +132,14 @@ sealed trait Stream[+A] {
       case (Empty, Cons(h, t))          => Some((None, Some(h())), (Empty, t()))
       case _                            => None
     })
+
+  /**
+   * Exercise 5.14
+   */
+  def startWith[A](s: Stream[A]): Boolean =
+    zipAll(s).takeWhile(_._2.nonEmpty).forAll {
+      case (l, r) => l == r
+    }
 }
 
 case object Empty extends Stream[Nothing]

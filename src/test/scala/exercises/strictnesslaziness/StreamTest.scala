@@ -199,4 +199,16 @@ class StreamTest extends FunSuite {
   test("ZipAll should consume both stream entirely") {
     assert(Stream(1, 2, 3).zipAll(Stream(5, 6)).toList == List((Some(1), Some(5)), (Some(2), Some(6)), (Some(3), None)))
   }
+
+  test("StartWith should return true when a stream is a suffix of another one") {
+    assert(Stream(1, 2, 3).startWith(Stream(1, 2)) == true)
+  }
+
+  test("StartWith should return false when a stream is not a suffix of another one") {
+    assert(Stream(1, 2, 3).startWith(Stream(1, 3, 2)) == false)
+  }
+
+  test("StartWith should return false when the second stream is longer than the first") {
+    assert(Stream(1, 2, 3).startWith(Stream(1, 2, 3, 4)) == false)
+  }
 }
